@@ -114,9 +114,9 @@ int sum(int arr[], int n)
 double pie(long int n){
     double result = 0;
     for (int i = 0; i < n; i++) {
-        result += 4 * (pow(-1, i) / (2 * i + 1));
+        result += (pow(-1, i) / (2 * i + 1));
     }
-    return result;
+    return result * 4;
 } 
 
 
