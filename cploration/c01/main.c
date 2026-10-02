@@ -45,7 +45,15 @@ int add(int n)
  */
 int fib(int n)
 {
-    /** Your CODE here **/
+    int a = 0;
+    int b = 1;
+    int result = 0;
+    for (int i = 1; i < n; i++) {
+        result = a + b;
+        a = b;
+        b = result;
+    }
+    return result;
 }
  
  
