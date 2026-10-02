@@ -47,7 +47,7 @@ int fib(int n)
 {
     int a = 0;
     int b = 1;
-    int result = 0;
+    int result = 1;
     for (int i = 1; i < n; i++) {
         result = a + b;
         a = b;
