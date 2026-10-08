@@ -100,6 +100,9 @@ int vowels(char* txt) {
 		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
 			vowel++;
 		}
+		if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+			vowel++;
+		}
 	}
 
 	return vowel;
