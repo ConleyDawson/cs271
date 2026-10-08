@@ -70,7 +70,12 @@ char *welcome(char* hello, char* name) {
  */
 void reverse(char* txt, char* result) {
 
-	/* REPLACE WITH YOUR CODE */
+	int j = 0;
+
+	for (int i = strlen(txt) - 1; i >= 0; i--) {
+		result[j] = txt[i];
+		j++;
+	}
 	
 }
 
