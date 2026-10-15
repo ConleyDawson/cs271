@@ -62,5 +62,8 @@ int main(int argc, const char *argv[])
 		fprintf(fout, line);
 	}
 
+	fclose(fin);
+	fclose(fout);
+
 	return 1;
 }
