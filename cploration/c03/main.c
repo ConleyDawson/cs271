@@ -65,5 +65,5 @@ int main(int argc, const char *argv[])
 	fclose(fin);
 	fclose(fout);
 
-	return 1;
+	return 0;
 }
