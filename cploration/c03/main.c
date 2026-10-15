@@ -26,5 +26,27 @@ int main(int argc, const char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
+	// pointer to our input file "fin" for "file in"
+	// "r" indicates read-only mode
+	FILE *fin = fopen(argv[1], "r");
+
+	// make sure the file is not null
+	if (fin == NULL)
+	{
+		perror("Unable to open file!");
+		exit(EXIT_FAILURE);
+	}
+
+	// Output file name
+	char out_file[MAX_LINE_LENGTH];
+	// add input file name
+	strcat(out_file, argv[1]);
+	// add .echo extension
+	strcat(out_file, ".echo");
+
+	// Open the output file
+	// "w+" indicates write and overwrite
+	FILE *fout = fopen(out_file, "w+");
+
 	return 1;
 }
