@@ -16,5 +16,15 @@
 // "argv[]" is a pointer to an array of strings
 int main(int argc, const char *argv[])
 {	
+	// arg[0] is the name of the binary, so we don't care about it.
+	// we need just one argument, arg[1]
+
+	// check that the argc is 2 (the binary name and the one expected arg)
+	if (argc != 2)
+	{
+		printf("Usage: %s [filename]\n", argv[0]);
+		exit(EXIT_FAILURE);
+	}
+
 	return 1;
 }
