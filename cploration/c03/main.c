@@ -48,5 +48,19 @@ int main(int argc, const char *argv[])
 	// "w+" indicates write and overwrite
 	FILE *fout = fopen(out_file, "w+");
 
+	// The file is parsed line by line.
+	// "line" will store the contents of the current line
+	char line[MAX_LINE_LENGTH] = {0};
+	// This will store the line number. It is unsigned because it will always be positive.
+	unsigned int line_num = 0;
+
+	// "fgets" grabs a line from "fin" and stores it in the variable "line"
+	while (fgets(line, sizeof(line), fin))
+	{
+		line_num++;
+		printf("[%s] %d\n", line_num, line);
+		fprintf(fout, line);
+	}
+
 	return 1;
 }
