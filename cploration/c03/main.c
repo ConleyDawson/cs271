@@ -12,6 +12,8 @@
 
 #define MAX_LINE_LENGTH  200
 
+// "argc" is the number of arguments passed
+// "argv[]" is a pointer to an array of strings
 int main(int argc, const char *argv[])
 {	
 	return 1;
