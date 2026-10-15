@@ -38,7 +38,7 @@ int main(int argc, const char *argv[])
 	}
 
 	// Output file name
-	char out_file[MAX_LINE_LENGTH];
+	char out_file[MAX_LINE_LENGTH] = {0};
 	// add input file name
 	strcat(out_file, argv[1]);
 	// add .echo extension
@@ -58,7 +58,7 @@ int main(int argc, const char *argv[])
 	while (fgets(line, sizeof(line), fin))
 	{
 		line_num++;
-		printf("[%s] %d\n", line_num, line);
+		printf("[%d] %s", line_num, line);
 		fprintf(fout, line);
 	}
 
