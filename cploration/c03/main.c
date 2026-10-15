@@ -58,7 +58,7 @@ int main(int argc, const char *argv[])
 	while (fgets(line, sizeof(line), fin))
 	{
 		line_num++;
-		printf("[%d] %s", line_num, line);
+		printf("[%04d] %s", line_num, line);
 		fprintf(fout, line);
 	}
 
