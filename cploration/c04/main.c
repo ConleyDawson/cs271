@@ -16,6 +16,13 @@ int main(int argc, const char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
+	FILE *fin = fopen(argv[1], "r");
+
+	if (fin == null)
+	{
+		ferror("Unable to open file!");
+		exit(EXIT_FAILURE);
+	}
 }
 
 
