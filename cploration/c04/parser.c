@@ -6,6 +6,8 @@
  * 
  ****************************************/
 #include "parser.h"
+#include <string.h>
+
 
 /* Function: strip
  * -------------
@@ -17,7 +19,20 @@
  */
 char *strip(char *s){	
 
-	// your code here
+	char s_new[strlen(s) + 1];
+	unsigned int i = 0;
+
+	for (char *s2 = s; *s2; s2++) {
+		if (*s2 == '/' && *(s2+1) == '/') {
+			break;
+		} else if (!isspace(*s2)) {
+			s_new[i++] = *s2;
+		}
+	}
+
+	s_new[i] = '\0';
+
+	strcpy(s, s_new);
 	
     return s;	
 }
@@ -32,6 +47,12 @@ char *strip(char *s){
  */
 void parse(FILE * file){
 	
-	// your code here
+	char line[MAX_LINE_LENGTH];
+
+	while (fgets(line, sizeof(line), file)) {
+		strip(line);
+		if (!*line) continue;
+		printf("%s\n", line);
+	}
 	
 }

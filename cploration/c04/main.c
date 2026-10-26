@@ -18,11 +18,15 @@ int main(int argc, const char *argv[])
 
 	FILE *fin = fopen(argv[1], "r");
 
-	if (fin == null)
+	if (fin == NULL)
 	{
-		ferror("Unable to open file!");
+		perror("Unable to open file!");
 		exit(EXIT_FAILURE);
 	}
+
+	parse(fin);
+
+	fclose(fin);
 }
 
 
