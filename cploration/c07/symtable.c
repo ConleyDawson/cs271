@@ -41,3 +41,23 @@ void symtable_insert(char *key, hack_addr addr) {
 
     hashArray[hashIndex] = symbol;
 }
+
+Symbol *symtable_find(char * key) {
+    // Get the hash.
+    int hashIndex = hash(key);
+
+    // Move in array until empty.
+    while (hashArray[hashIndex] != NULL) {
+        if (strcmp(hashArray[hashIndex]->name, key) == 0) {
+            return hashArray[hashIndex];
+        }
+
+        // Go to next cell.
+        ++hashIndex;
+
+        // Wrap around the table.
+        hashIndex %= SYMBOL_TABLE_SIZE;
+    }
+
+    return NULL;
+}
