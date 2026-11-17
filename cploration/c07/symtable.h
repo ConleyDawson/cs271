@@ -7,7 +7,7 @@
  ****************************************/
 #include <stdlib.h>
 
-#define SYMBOL_TABLE_SIZE  1000;
+#define SYMBOL_TABLE_SIZE  1000
 
 typedef int16_t hack_addr;
 

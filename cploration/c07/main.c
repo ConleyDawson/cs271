@@ -6,6 +6,7 @@
  * 
  ****************************************/
 #include "parser.h"
+#include "symtable.h"
 
 int main(int argc, const char *argv[])
 {		
@@ -25,6 +26,7 @@ int main(int argc, const char *argv[])
 	}
 
 	parse(fin);
+	symtable_display_table();
 
 	fclose(fin);
 }

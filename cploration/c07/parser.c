@@ -8,6 +8,7 @@
 #include "parser.h"
 #include <stdbool.h>
 #include <string.h>
+#include "symtable.h"
 
 
 /* Function: strip
@@ -49,22 +50,26 @@ char *strip(char *s){
 void parse(FILE * file){
 	
 	char line[MAX_LINE_LENGTH];
+	int line_number = 0;
 
 	while (fgets(line, sizeof(line), file)) {
 		strip(line);
 		if (!*line) continue;
-		char inst_type = '\0';
+		// char inst_type = '\0';
 		if (is_Atype(line)) {
-			inst_type = 'A';
+			// inst_type = 'A';
+			line_number++;
 		} else if (is_label(line)) {
-			inst_type = 'L';
+			// inst_type = 'L';
 			char label[MAX_LINE_LENGTH];
 			extract_label(line, label);
 			strcpy(line, label);
+			symtable_insert(label, line_number);
 		} else if (is_Ctype(line)) {
-			inst_type = 'C';
+			// inst_type = 'C';
+			line_number++;
 		}
-		printf("%c  %s\n", inst_type, line);
+		// printf("%c  %s\n", inst_type, line);
 	}
 	
 }

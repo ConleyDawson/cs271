@@ -6,6 +6,7 @@
  *
  ****************************************/
 #include "symtable.h"
+#include <stdio.h>
 #include <string.h>
 
 Symbol* hashArray[SYMBOL_TABLE_SIZE];
@@ -60,4 +61,13 @@ Symbol *symtable_find(char * key) {
     }
 
     return NULL;
+}
+
+void symtable_display_table() {
+    int i = 0;
+    for (i = 0; i < SYMBOL_TABLE_SIZE; i++) {
+        if(hashArray[i] != NULL) {
+            printf("{%s,%d}\n",hashArray[i]->name,hashArray[i]->address);
+        }
+    }
 }
