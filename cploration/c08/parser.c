@@ -8,6 +8,7 @@
 #include "parser.h"
 #include <stdbool.h>
 #include <string.h>
+#include "error.h"
 #include "symtable.h"
 
 
@@ -50,26 +51,29 @@ char *strip(char *s){
 void parse(FILE * file){
 	
 	char line[MAX_LINE_LENGTH];
-	int line_number = 0;
+	unsigned int line_num = 0;
+	unsigned int instr_num = 0;
 
 	while (fgets(line, sizeof(line), file)) {
+		line_num++;
+		if (instr_num > MAX_INSTRUCTIONS) {
+			exit_program(EXIT_TOO_MANY_INSTRUCTIONS, MAX_INSTRUCTIONS + 1);
+		}
 		strip(line);
 		if (!*line) continue;
 		char inst_type = '\0';
 		if (is_Atype(line)) {
 			inst_type = 'A';
-			line_number++;
 		} else if (is_label(line)) {
 			inst_type = 'L';
 			char label[MAX_LINE_LENGTH];
 			extract_label(line, label);
 			strcpy(line, label);
-			symtable_insert(label, line_number);
+			symtable_insert(label, instr_num);
 		} else if (is_Ctype(line)) {
 			inst_type = 'C';
-			line_number++;
 		}
-		printf("%u: %c  %s\n", line_number, inst_type, line);
+		printf("%u: %c  %s\n", instr_num, inst_type, line);
 	}
 
 

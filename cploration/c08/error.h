@@ -9,6 +9,7 @@ typedef enum exitcode {
      */
     EXIT_INCORRECT_ARGUMENTS = 1,
     EXIT_CANNOT_OPEN_FILE,
+    EXIT_TOO_MANY_INSTRUCTIONS,
 } exitcode;
 
 void exit_program(enum exitcode code, ...);
