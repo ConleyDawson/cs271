@@ -68,11 +68,19 @@ void parse(FILE * file){
 			inst_type = 'L';
 			char label[MAX_LINE_LENGTH];
 			extract_label(line, label);
+			if (!isalpha(label[0])) {
+				exit_program(EXIT_INVALID_LABEL, line_num, line);
+			}
+			if (symtable_find(label) != NULL) {
+				exit_program(EXIT_SYMBOL_ALREADY_EXISTS, line_num, line);
+			}
 			strcpy(line, label);
 			symtable_insert(label, instr_num);
+			continue;
 		} else if (is_Ctype(line)) {
 			inst_type = 'C';
 		}
+		instr_num++;
 		printf("%u: %c  %s\n", instr_num, inst_type, line);
 	}
 
